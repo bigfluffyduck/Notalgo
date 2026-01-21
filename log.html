@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Log a Problem</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard_style.css" />
+</head>
+<body>
+
+  <main class="container">
+
+    <section class="header">
+      <h1>Log a problem</h1>
+      <p>Capture how you approached it</p>
+    </section>
+
+    <section class="log-form">
+        <input id="problemLink" placeholder="Problem link (https://…)" />
+
+        <input id="platform" placeholder="Platform (LeetCode)" />
+        <input id="difficulty" placeholder="Difficulty (Easy / Medium / Hard)" />
+        <input id="status" placeholder="Status (Understood / Revisiting)" />
+        <textarea id="insight" placeholder="Your key insight"></textarea>
+        <input id="tags" placeholder="Tags (comma separated)" />
+
+      <button id="saveProblem">Save problem</button>
+    </section>
+
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged }
+      from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDkuk7_JrB2QN0R3ir0HVNyecqlA54tS1U",
+      authDomain: "notalgo.firebaseapp.com",
+      projectId: "notalgo",
+      appId: "1:240974177203:web:08b783d7dcb08b651ee1c6"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let currentUser = null;
+
+    onAuthStateChanged(auth, user => {
+      if (!user) {
+        window.location.href = "login.html";
+      } else {
+        currentUser = user;
+      }
+    });
+
+    document.getElementById("saveProblem").onclick = async () => {
+      const tags = document.getElementById("tags").value
+        .split(",")
+        .map(t => t.trim())
+        .filter(Boolean);
+
+      await addDoc(
+        collection(db, "users", currentUser.uid, "problems"),
+        {
+            problemLink: document.getElementById("problemLink").value,
+            platform: document.getElementById("platform").value,
+            difficulty: document.getElementById("difficulty").value,
+            status: document.getElementById("status").value,
+            insight: document.getElementById("insight").value,
+            tags,
+          createdAt: new Date()
+        }
+      );
+
+      window.location.href = "index.html";
+    };
+  </script>
+
+</body>
+</html>

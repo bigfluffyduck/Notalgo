@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notalgo Dashboard</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard_style.css" />
+
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <span class="logo">/*Notalgo*/</span>
+      <button id="logoutBtn" class="logout-btn">Logout</button>
+  </nav>
+
+  <!-- Main -->
+  <main class="container">
+
+    <!-- Header -->
+    <section class="header">
+      <h1 id="greeting">Hi 👋</h1>
+      <p id="countText">You’ve logged insights from 0 problems</p>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="cta-card" id="openLogModal">
+        <span class="plus">+</span>
+        <div>
+          <h3>Log a problem</h3>
+          <p>Capture what you learned</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline" id="timeline">
+      <h2>Learning timeline</h2>
+    </section>
+
+  </main>
+
+  <!-- ================= MODAL ================= -->
+
+  <div class="modal-overlay" id="logModal">
+    <div class="modal">
+
+      <h2>Log a problem</h2>
+      <p class="modal-sub">Capture how you approached it</p>
+        <input id="problemLink" placeholder="Problem link (https://…)" />
+      <input id="platform" placeholder="Platform (Leetcode/Codeforces)(auto-filled)"readonly />
+      <input id="rating" type="number" placeholder="Rating"/>
+      <input id="difficulty" placeholder="Difficulty (Easy / Medium / Hard)(auto-filled)"readonly />
+      <input id="status" placeholder="Status (Understood / Revisiting)" />
+      <textarea id="insight" placeholder="Your key insight"></textarea>
+      <input id="tags" placeholder="Tags (comma separated)" />
+
+      <div class="modal-actions">
+        <button class="danger" id="deleteProblem">Delete</button>
+        <button class="secondary" id="closeModal">Cancel</button>
+        <button class="primary" id="saveProblem">Save</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module" src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.highlight { 
+    color: #4da3ff;
+    text-shadow: 0 0 12px rgba(77, 163, 255, 0.35); 
+    }
+
+body {
+    min-height: 100vh;
+
+    background:#1F2329;
+
+    font-family: sans-serif;
+
+    overflow-x: hidden; 
+    }
+.top-panel {
+  min-height: 100vh;            
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding-right: 8vw;
+  padding-left: 6vw; 
+}
+
+/* Perspective wrapper */
+.scene {
+  perspective: 1200px;
+}
+
+/* 3D frame */
+.frame {
+  transform-style: preserve-3d;
+
+  transform:
+    scale(1.2)
+    rotateX(-6deg)
+    rotateY(-16deg)
+    rotateZ(-4deg);
+
+  border-radius: 72px;
+
+  box-shadow:
+    0 40px 120px rgba(0, 0, 0, 0.2),
+    0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Code image */
+.frame img {
+  display: block;
+  width: 820px;
+  border-radius: 72px;
+}
+
+/* BOTTOM ROUNDED PANEL (appears after scroll) */
+.bottom-panel {
+    width: 100%;
+    height: 360px;
+
+    margin-top: 160px;   /* scroll gap from hero */
+    margin-bottom: 0;
+
+    background: #0f1216;
+    border-top-left-radius: 48px;
+    border-top-right-radius: 48px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    box-shadow:
+        0 -20px 60px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .frame img {
+    width: 90vw;
+    border-radius: 48px;
+  }
+
+  .frame {
+    border-radius: 48px;
+  }
+
+  .bottom-panel {
+    height: 240px;
+    border-radius: 32px;
+    margin-top: 120px;
+  }
+}
+.top-panel-content {
+    max-width: 640px;
+    margin-right: 6vw;
+}
+
+.top-panel-content h1 {
+  font-family: "Coda", sans-serif;
+  font-weight: 800;
+  font-size: 80px;
+  line-height: 1.05;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.top-panel-content p {
+  font-family: "Coda", sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+}
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 24px;
+
+  padding: 16px 32px;
+
+  background: #ff6a2b;
+  color: #ffffff;
+
+  font-family: "Coda", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+
+  border-radius: 6px;
+  text-decoration: none; 
+
+}
+.cta-button:hover {
+  background: #ff7a42;
+  transform: translateY(-1px);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+.top-login-btn {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+
+    padding: 14px 34px;
+
+    background: rgba(255, 255, 255, 0.0008);
+    backdrop-filter: blur(20px);
+    color: #ffffff;
+
+    font-family: "Coda", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+
+    border: 1px solid #000000;
+    backdrop-filter: blur(20px);
+    border-radius: 18px;
+    text-decoration:none;
+
+    z-index: 1000;
+}
+.top-login-btn:hover {
+  transform: translateY(-1px);
+  backdrop-filter: blur(100px);
+}
+.top-signup-btn:hover {
+  transform: translateY(-1px);
+  backdrop-filter: blur(100px);
+}
+.top-signup-btn {
+  position: fixed;
+  top: 24px;
+  right: 150px;            
+  padding: 14px 34px;
+  min-width: 120px;
+  text-align: center;
+
+  background: rgba(255, 106, 43, 0.75); 
+  color: #ffffff;
+
+  font-family: "Coda", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+
+  border-radius: 18px;
+  text-decoration: none;
+
+  backdrop-filter: blur(12px) saturate(120%);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  z-index: 1000;
+
+}
+
+/* 
+
+
+
+position: absolute;
+width: 274px;
+height: 61px;
+left: 1187px;
+top: 63px;
+
+filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+
+
+box-sizing: border-box;
+
+position: absolute;
+width: 155px;
+height: 61px;
+left: 44px;
+top: -11px;
+
+background: rgba(255, 255, 255, 0.0008);
+border: 1px solid #000000;
+backdrop-filter: blur(20px);
+border-radius: 18px;
+
+
+
+position: absolute;
+width: 98px;
+height: 50px;
+left: 73px;
+top: -6px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 39px;
+
+color: #FFFFFF;
+
+
+ */

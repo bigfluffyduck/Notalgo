@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Choose Username</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Coda:wght@400;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="get_started_style.css" />
+</head>
+<body>
+
+  <!-- Blurred GIF background -->
+  <div class="bg"></div>
+
+  <!-- Username card -->
+  <div class="login-card">
+    <h1>Choose a username</h1>
+    <p>This is what we will call you!</p>
+
+    <input
+      type="text"
+      id="username"
+      class="username-input"
+      placeholder="Enter username"
+    />
+
+    <button class="google-btn" id="saveUsername">
+      Continue
+    </button>
+  </div>
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged }
+      from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc }
+      from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDkuk7_JrB2QN0R3ir0HVNyecqlA54tS1U",
+      authDomain: "notalgo.firebaseapp.com",
+      projectId: "notalgo",
+      appId: "1:240974177203:web:08b783d7dcb08b651ee1c6"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let currentUser = null;
+
+    onAuthStateChanged(auth, user => {
+      if (!user) {
+        window.location.href = "login.html";
+      } else {
+        currentUser = user;
+      }
+    });
+
+    document.getElementById("saveUsername").onclick = async () => {
+      const username = document.getElementById("username").value.trim();
+
+      console.log(currentUser);
+
+      if (username.length < 3) {
+        alert("Username must be at least 3 characters");
+        return;
+      }
+
+      try {
+        await setDoc(doc(db, "users", currentUser.uid), {
+          username,
+          email: currentUser.email,
+          createdAt: new Date()
+        });
+
+        window.location.href = "index.html";
+      } catch (err) {
+        console.error(err);
+        alert("Failed to save username");
+      }
+    };
+  </script>
+
+</body>
+</html>
