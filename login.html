@@ -11,10 +11,8 @@
 </head>
 <body>
 
-  <!-- Blurred GIF background -->
   <div class="bg"></div>
 
-  <!-- Login card -->
   <div class="login-card">
     <h1>Login</h1>
     <p>Login with Google to continue</p>
@@ -23,15 +21,8 @@
     <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
     <span>Login with Google</span>
     </button>
-    <p class="login-hint">
-  Not signed in?
-  <a href="#" onclick="document.getElementById('googleSignIn').click()">
-    Sign in with Google
-  </a>
-</p>
   </div>
 
-  <!-- ✅ Firebase Auth ONLY -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getAuth, GoogleAuthProvider, signInWithPopup }

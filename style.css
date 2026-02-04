@@ -27,13 +27,9 @@ body {
   padding-right: 8vw;
   padding-left: 6vw; 
 }
-
-/* Perspective wrapper */
 .scene {
   perspective: 1200px;
 }
-
-/* 3D frame */
 .frame {
   transform-style: preserve-3d;
 
@@ -50,49 +46,74 @@ body {
     0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
-/* Code image */
 .frame img {
   display: block;
   width: 820px;
   border-radius: 72px;
 }
+/* ================= FEATURES PANEL ================= */
 
-/* BOTTOM ROUNDED PANEL (appears after scroll) */
-.bottom-panel {
-    width: 100%;
-    height: 360px;
+.features-panel {
+  margin-top: 120px;
+  padding: 96px 64px;
 
-    margin-top: 160px;   /* scroll gap from hero */
-    margin-bottom: 0;
+  background: #0f1216;
+  border-top-left-radius: 48px;
+  border-top-right-radius: 48px;
 
-    background: #0f1216;
-    border-top-left-radius: 48px;
-    border-top-right-radius: 48px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+  box-shadow:
+    0 -40px 120px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+}
 
-    box-shadow:
-        0 -20px 60px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+.features-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 96px;
+}
+
+.features-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
 }
 
 
-/* Responsive adjustments */
-@media (max-width: 900px) {
-  .frame img {
-    width: 90vw;
-    border-radius: 48px;
-  }
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
 
-  .frame {
-    border-radius: 48px;
-  }
+.step {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 24px;
+}
 
-  .bottom-panel {
-    height: 240px;
-    border-radius: 32px;
-    margin-top: 120px;
-  }
+.step-number {
+  display: inline-block;
+  background: #ff6a2b;
+  color: #000;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 6px 12px;
+  margin-bottom: 12px;
+}
+
+.step h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.step p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
 }
 .top-panel-content {
     max-width: 640px;
@@ -151,7 +172,7 @@ body {
     padding: 14px 34px;
 
     background: rgba(255, 255, 255, 0.0008);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(100px);
     color: #ffffff;
 
     font-family: "Coda", sans-serif;
@@ -169,78 +190,68 @@ body {
   transform: translateY(-1px);
   backdrop-filter: blur(100px);
 }
-.top-signup-btn:hover {
-  transform: translateY(-1px);
-  backdrop-filter: blur(100px);
+
+/* <===========BOTTOM PANEL==========> */
+.features {
+  background: #131519;
+  margin-top: 100px;
 }
-.top-signup-btn {
-  position: fixed;
-  top: 24px;
-  right: 150px;            
-  padding: 14px 34px;
-  min-width: 120px;
+
+.features-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 0px;
+}
+.section-title {
   text-align: center;
-
-  background: rgba(255, 106, 43, 0.75); 
+  font-size: 60px;
+  font-weight: 800;
+  margin-bottom: 110px;
   color: #ffffff;
-
-  font-family: "Coda", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-
-  border-radius: 18px;
-  text-decoration: none;
-
-  backdrop-filter: blur(12px) saturate(120%);
-
-  border: 1px solid rgba(255, 255, 255, 0.25);
-
-  z-index: 1000;
-
 }
 
-/* 
+.feature-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 100px;
+  margin-bottom: 120px;
+}
+.feature-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.feature-text {
+  max-width: 480px;
+}
+
+.feature-text h3 {
+  font-size: 55px;
+  color: #ffffff;
+}
+
+.feature-text p {
+  font-size: 30px;
+  line-height: 1.7;
+  color: #b8c0cc;
+}
+.feature-image {
+  width: 600px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.feature-row:last-child {
+  margin-bottom: 0;
+}
+.feature-cta {
+  font-size: 30px;
+  font-weight: 600;
+  color: #4da3ff;
+  text-decoration: none;
+}
+.feature-cta:hover{
+  text-decoration:underline;
+}
 
 
-
-position: absolute;
-width: 274px;
-height: 61px;
-left: 1187px;
-top: 63px;
-
-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-
-
-
-box-sizing: border-box;
-
-position: absolute;
-width: 155px;
-height: 61px;
-left: 44px;
-top: -11px;
-
-background: rgba(255, 255, 255, 0.0008);
-border: 1px solid #000000;
-backdrop-filter: blur(20px);
-border-radius: 18px;
-
-
-
-position: absolute;
-width: 98px;
-height: 50px;
-left: 73px;
-top: -6px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 39px;
-
-color: #FFFFFF;
-
-
- */
